@@ -8,10 +8,11 @@ namespace DTubeRevenueCalculator.Adapter
 {
     public class FileAdapter
     {
-        public List<double> revenues { get; private set; }
+        public List<double> Revenues { get; private set; }
         //public List<DateTime> dates { get; private set; }
         public FileAdapter() {
-            using (StreamReader sr = new StreamReader("~/Data/ASDASD.txt", System.Text.Encoding.UTF8)) {
+            Revenues = new List<double>();
+            using (StreamReader sr = new StreamReader(@"C:\Users\bradib0y\source\repos\DTubeRevenueCalculator\DTubeRevenueCalculator\Data\ASDASD.txt", System.Text.Encoding.UTF8)) {
                 System.Text.RegularExpressions.Regex regexPattern = new System.Text.RegularExpressions.Regex("\\$[0-9]([0-9])*\\.[0-9]([0-9])*");
                 while (!sr.EndOfStream) {
                     string line = sr.ReadLine();
@@ -19,7 +20,7 @@ namespace DTubeRevenueCalculator.Adapter
                         {
                             try
                             {
-                            revenues.Add(Convert.ToDouble(line.Substring(1)));
+                            Revenues.Add(Convert.ToDouble(line.Substring(1)));
                             }
                             catch (Exception e)
                             {
